@@ -1,5 +1,5 @@
 # source: http://localhost:3060/graphql
-# timestamp: Wed Dec 04 2019 10:36:41 GMT+0100 (West Africa Standard Time)
+# timestamp: Fri Dec 06 2019 16:46:46 GMT+0000 (GMT)
 
 """
 Application model
@@ -1671,6 +1671,17 @@ type Mutation {
     token: String!
     data: StripeCreditCardDataInputType!
     monthlyLimitPerMember: Int
+  ): PaymentMethodType
+
+  """
+  Replace a payment method
+  """
+  replaceCreditCard(
+    id: Int!
+    CollectiveId: Int!
+    name: String!
+    token: String!
+    data: StripeCreditCardDataInputType!
   ): PaymentMethodType
   createVirtualCards(
     CollectiveId: Int!

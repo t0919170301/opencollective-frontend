@@ -90,6 +90,8 @@ class EditPaymentMethod extends React.Component {
     const saved = this.state.paymentMethod.monthlyLimitPerMember === paymentMethod.monthlyLimitPerMember;
     const hasActions = !saved || canRemove || hasSubscriptions;
 
+    console.log(paymentMethod);
+
     return (
       <div className="EditPaymentMethod">
         <style global jsx>
