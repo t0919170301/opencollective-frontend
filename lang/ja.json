@@ -675,6 +675,7 @@
   "expense.payoutMethod.paypal.hidden": "PayPal ({paypalEmail, select, missing {未入力} hidden {非表示} other {{paypalEmail}}})",
   "expense.payoutMethod.paypal.label": "PayPal アドレス",
   "expense.payoutMethod.paypal.missing": "Please provide a valid paypal email address",
+  "expense.payoutMethod.transferwise": "Transferwise",
   "expense.pending": "保留中",
   "expense.platformFeeInCollectiveCurrency": "プラットフォーム手数料",
   "expense.privateMessage": "私的な指示",

@@ -675,6 +675,7 @@
   "expense.payoutMethod.paypal.hidden": "PayPal ({paypalEmail, select, missing {manquant} hidden {caché} other {{paypalEmail}}} )",
   "expense.payoutMethod.paypal.label": "Adresse PayPal",
   "expense.payoutMethod.paypal.missing": "Veuillez fournir une adresse PayPal valide",
+  "expense.payoutMethod.transferwise": "Transferwise",
   "expense.pending": "en attente",
   "expense.platformFeeInCollectiveCurrency": "commission de la plateforme",
   "expense.privateMessage": "Instructions privées",

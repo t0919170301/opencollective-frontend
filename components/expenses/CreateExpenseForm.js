@@ -46,6 +46,10 @@ class CreateExpenseForm extends React.Component {
         id: 'expense.payoutMethod.manual',
         defaultMessage: 'Other (see instructions)',
       },
+      transferwise: {
+        id: 'expense.payoutMethod.transferwise',
+        defaultMessage: 'Transferwise',
+      },
       'error.descriptionMissing': {
         id: 'expense.error.descriptionMissing',
         defaultMessage: 'Missing description',
@@ -100,10 +104,24 @@ class CreateExpenseForm extends React.Component {
     }
   }
 
-  getOptions(arr, intlVars) {
-    return arr.map(key => {
+  getOptions() {
+    const { expense } = this.state;
+    const { intl, LoggedInUser, collective } = this.props;
+    const options = ['paypal', 'other'];
+    const intlVars = {
+      paypalEmail: get(expense, 'user.paypalEmail') || intl.formatMessage(this.messages['newExpense.paypal.label']),
+    };
+
+    if (
+      get(LoggedInUser, 'collective.settings.hasBankAccount') &&
+      collective.host.connectedAccounts.find(ca => ca.service === 'transferwise')
+    ) {
+      options.push('transferwise');
+    }
+
+    return options.map(key => {
       const obj = {};
-      obj[key] = this.props.intl.formatMessage(this.messages[key], intlVars);
+      obj[key] = intl.formatMessage(this.messages[key], intlVars);
       return obj;
     });
   }
@@ -188,12 +206,10 @@ class CreateExpenseForm extends React.Component {
   }
 
   renderForm() {
-    const { LoggedInUser, intl, collective } = this.props;
+    const { LoggedInUser, collective } = this.props;
     const { expense } = this.state;
 
-    const payoutMethodOptions = this.getOptions(['paypal', 'other'], {
-      paypalEmail: get(expense, 'user.paypalEmail') || intl.formatMessage(this.messages['newExpense.paypal.label']),
-    });
+    const payoutMethodOptions = this.getOptions();
 
     return (
       <div className={`CreateExpenseForm ${this.props.mode}`}>

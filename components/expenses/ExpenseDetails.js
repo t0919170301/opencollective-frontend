@@ -48,6 +48,10 @@ class ExpenseDetails extends React.Component {
         id: 'expense.payoutMethod.donation',
         defaultMessage: 'Donation',
       },
+      transferwise: {
+        id: 'expense.payoutMethod.transferwise',
+        defaultMessage: 'Transferwise',
+      },
     });
 
     this.state = { modified: false, expense: {} };
@@ -81,7 +85,8 @@ class ExpenseDetails extends React.Component {
     const payoutMethod = this.state.expense.payoutMethod || expense.payoutMethod;
     const paypalEmail = get(expense, 'user.paypalEmail') || get(expense, 'user.email');
     // Don't display "donation" unless it's the current payoutMethod (phasing out)
-    const payoutMethods = expense.payoutMethod === 'donation' ? ['paypal', 'other', 'donation'] : ['paypal', 'other'];
+    const payoutMethods = ['paypal', 'transferwise', 'other'];
+    if (expense.payoutMethod === 'donation') payoutMethod.push('donation');
     const payoutMethodOptions = this.getOptions(payoutMethods, {
       paypalEmail: paypalEmail || (canEditExpense ? 'missing' : 'hidden'),
     });

@@ -675,6 +675,7 @@
   "expense.payoutMethod.paypal.hidden": "PayPal ({paypalEmail, select, missing {отсутствует} hidden {скрыт} other {{paypalEmail}}})",
   "expense.payoutMethod.paypal.label": "Адрес PayPal",
   "expense.payoutMethod.paypal.missing": "Пожалуйста, предоставьте корректный адрес электронной почты для PayPal",
+  "expense.payoutMethod.transferwise": "Transferwise",
   "expense.pending": "ожидает",
   "expense.platformFeeInCollectiveCurrency": "комиссия платформы",
   "expense.privateMessage": "Личные инструкции",
