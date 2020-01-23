@@ -9,18 +9,20 @@ import { Router } from '../server/pages';
 import SearchIcon from './SearchIcon';
 
 const SearchInputContainer = styled(Flex)`
-  border: solid 1px var(--silver-four);
+  border: none;
   border-radius: 10px;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.1);
 `;
 
 const SearchInput = styled(Box)`
   && {
+    color: rgba(255, 255, 255, 0.4);
     appearance: none;
     background-color: transparent;
     border: none;
-    font-size: 1.2rem;
-    letter-spacing: 0.1rem;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: -0.2px;
     ${fontSize};
   }
 `;
@@ -39,7 +41,7 @@ const handleSubmit = event => {
   event.preventDefault();
 };
 
-const SearchForm = ({ fontSize, onSubmit = handleSubmit, placeholder = 'Search Open Collective', width = 1 }) => (
+const SearchForm = ({ fontSize, onSubmit = handleSubmit, placeholder = 'Search Open Collective...', width = 1 }) => (
   <form action="/search" method="GET" onSubmit={onSubmit}>
     <SearchInputContainer alignItems="center" justifyContent="space-between" p={1}>
       <SearchInput

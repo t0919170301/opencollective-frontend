@@ -16,7 +16,7 @@ import { withUser } from './UserProvider';
 import theme from '../lib/theme';
 
 const Logo = styled.img.attrs({
-  src: '/static/images/opencollective.svg',
+  src: '/static/images/opencollective-logo-new.svg',
   alt: 'Open Collective logo',
 })`
   ${({ animate }) => (animate ? rotateMixin : null)};
@@ -37,14 +37,19 @@ const NavList = styled(Flex)`
 const NavLinkContainer = styled(Box)`
   text-align: center;
 `;
+
 NavLinkContainer.defaultProps = {
   as: 'li',
   px: [1, 2, 3],
 };
 
 const NavLink = styled.a`
-  color: #777777;
+  color: rgba(255, 255, 255, 0.7);
   font-size: 1.4rem;
+
+  &:hover {
+    color: rgba(255, 255, 255, 0.7);
+  }
 `;
 
 class TopBar extends React.Component {
@@ -77,7 +82,7 @@ class TopBar extends React.Component {
         alignItems="center"
         justifyContent="space-between"
         flexDirection="row"
-        css={{ height: theme.sizes.navbarHeight, background: 'white' }}
+        css={{ height: theme.sizes.navbarHeight, background: theme.colors.black[900] }}
       >
         <Link route="home" passHref>
           <Flex as="a" alignItems="center">
@@ -94,7 +99,7 @@ class TopBar extends React.Component {
           {showSearch && (
             <Flex justifyContent="center" flex="1 1 auto">
               <Hide xs width={1}>
-                <SearchFormContainer p={2} width="280px">
+                <SearchFormContainer p={2} width={[null, null, '280px', null, '288px']}>
                   <SearchForm />
                 </SearchFormContainer>
               </Hide>
