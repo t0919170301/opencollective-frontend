@@ -37,6 +37,11 @@ app.prepare().then(() => {
   server.use(routes(server, app));
   server.use(loggerMiddleware.errorLogger);
 
+  if (env === 'e2e' || process.env.E2E_TEST) {
+    // eslint-disable-next-line node/no-unpublished-require
+    require('@cypress/code-coverage/middleware/express')(server);
+  }
+
   const httpServer = http.createServer(server);
 
   httpServer.on('error', err => {
